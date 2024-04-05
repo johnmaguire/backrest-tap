@@ -9,16 +9,16 @@ class Backrest < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/garethgeorge/backrest/releases/download/v0.17.0/backrest_Darwin_x86_64.tar.gz"
-      sha256 "a4c694ffbbd69aa7a56519d653519bc529c0a0883be808dd0b382e6e24190c0c"
+      url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Darwin_x86_64.tar.gz"
+      sha256 "cd91305cde86184018fe0abfc5de90f0f4a395fe4418b38482757414312ba0ba"
 
       def install
         bin.install "backrest"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/garethgeorge/backrest/releases/download/v0.17.0/backrest_Darwin_arm64.tar.gz"
-      sha256 "29b6d5964c073cf1033f544add87699a0801aa8885ae75868fbef58a063d1e70"
+      url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Darwin_arm64.tar.gz"
+      sha256 "7ac19a7bdc63dc65b1155d7b6f68336eef87f7382e5bb3d915381240cf3f9a72"
 
       def install
         bin.install "backrest"
@@ -28,24 +28,24 @@ class Backrest < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/garethgeorge/backrest/releases/download/v0.17.0/backrest_Linux_x86_64.tar.gz"
-      sha256 "aa45b02fd4145ad1e3004cb852a889af37bed06eeca0f961565701c554be9d9f"
+      url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_x86_64.tar.gz"
+      sha256 "3c89708a7d461f5436b1cc5796fdca154997094554ff0e36b36ae832a9b687ad"
 
       def install
         bin.install "backrest"
       end
     end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/garethgeorge/backrest/releases/download/v0.17.0/backrest_Linux_armv6.tar.gz"
-      sha256 "2d85e141b940656325fd6f58fa25204004d12f13c3381aa436e7e5730b5f6479"
+      url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_armv6.tar.gz"
+      sha256 "482fc6e28208892e8f029b0f2657afc86d08571789f19cee19f99a3f9d234288"
 
       def install
         bin.install "backrest"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/garethgeorge/backrest/releases/download/v0.17.0/backrest_Linux_arm64.tar.gz"
-      sha256 "d073dd8817c61b09b9b807f112b432d78859df69d6bc44348da4c89357b4deb4"
+      url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_arm64.tar.gz"
+      sha256 "e46c1397063c62aa6ddb332c69c6dd79314f1dca1a5ce74b8b4efe44bc5fa830"
 
       def install
         bin.install "backrest"
@@ -53,34 +53,7 @@ class Backrest < Formula
     end
   end
 
-  plist_options startup: false
-
-  def plist
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.backrest</string>
-    <key>ProgramArguments</key>
-    <array>
-    <string>/usr/local/bin/backrest</string>
-    </array>
-    <key>KeepAlive</key>
-    <true/>
-    <key>StandardOutPath</key>
-    <string>/tmp/backrest.log</string>
-    <key>StandardErrorPath</key>
-    <string>/tmp/backrest.log</string>
-    <key>EnvironmentVariables</key>
-    <dict>
-        <key>PATH</key>
-        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
-    </dict>
-</dict>
-</plist>
-
-    EOS
+  service do
+    backrest
   end
 end
