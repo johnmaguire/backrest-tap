@@ -10,7 +10,7 @@ class Backrest < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Darwin_x86_64.tar.gz"
-      sha256 "4ad835e2c22c4ed727ad517f535a17a12e5e3b6d133945082b7ee697b312ab15"
+      sha256 "c65c28db3f8d34fe7ece3a749013fccc48be9a47f835b9dbeaedf029933e8a57"
 
       def install
         bin.install "backrest"
@@ -18,7 +18,7 @@ class Backrest < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Darwin_arm64.tar.gz"
-      sha256 "ba9e274a4250db8c03101ee4f3f959e5a1c9c10a50c7e931e655b6dd0a656eb0"
+      sha256 "b9930604668670efb90be1d13d9208cd6bf4b19ca504db4364e3a547bea02cb0"
 
       def install
         bin.install "backrest"
@@ -29,7 +29,7 @@ class Backrest < Formula
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_x86_64.tar.gz"
-      sha256 "2dc38ba57160de6fa652e263dedbd3588a8e7b85b5e12059911ec78f2a9fcd6d"
+      sha256 "a1fbabb9fbc9735f206a11f96a81657c38d0855f1d5bd11d1efb79e7e6060d0b"
 
       def install
         bin.install "backrest"
@@ -37,7 +37,7 @@ class Backrest < Formula
     end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_armv6.tar.gz"
-      sha256 "2fabdbb16b7f305ef9f8b9299300c1210adcf252c75f8012455ad02bbf2c9f36"
+      sha256 "8402c567ef6cc327f39548c4002096fc63f168ac01a32f338f7e11935a5c7f57"
 
       def install
         bin.install "backrest"
@@ -45,7 +45,7 @@ class Backrest < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_arm64.tar.gz"
-      sha256 "e6539df28536225596dff56006b96b0c63c072154ddfb99055072f067a7b1238"
+      sha256 "5e4668b80b53e1f2170f12b41c9bad85ca67c5b4bcf2b43f5546a03dd6726889"
 
       def install
         bin.install "backrest"
@@ -55,5 +55,7 @@ class Backrest < Formula
 
   service do
     run opt_bin/"backrest"
+    error_log_path var/"log/backrest.log"
+    log_path var/"log/backrest.log"
   end
 end
