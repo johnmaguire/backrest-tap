@@ -10,7 +10,7 @@ class Backrest < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Darwin_x86_64.tar.gz"
-      sha256 "bc49c7121b5b99d8a9bae496c21ea57c2d73f32c85506a8cb2fcc9c4fac9574c"
+      sha256 "4ad835e2c22c4ed727ad517f535a17a12e5e3b6d133945082b7ee697b312ab15"
 
       def install
         bin.install "backrest"
@@ -18,7 +18,7 @@ class Backrest < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Darwin_arm64.tar.gz"
-      sha256 "34f842ebfd8ea501776e42c9628413a345258e553b8367c0f55827b30d2e68dc"
+      sha256 "ba9e274a4250db8c03101ee4f3f959e5a1c9c10a50c7e931e655b6dd0a656eb0"
 
       def install
         bin.install "backrest"
@@ -29,7 +29,7 @@ class Backrest < Formula
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_x86_64.tar.gz"
-      sha256 "a3a28c6121419407f4ed498bb0d3377bbdacdde615beed1fde7ba42f9aba46e6"
+      sha256 "2dc38ba57160de6fa652e263dedbd3588a8e7b85b5e12059911ec78f2a9fcd6d"
 
       def install
         bin.install "backrest"
@@ -37,7 +37,7 @@ class Backrest < Formula
     end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_armv6.tar.gz"
-      sha256 "f98314ec71dcbbab702bffc75aeedaa47659844175eeca0c695adddf50522c53"
+      sha256 "2fabdbb16b7f305ef9f8b9299300c1210adcf252c75f8012455ad02bbf2c9f36"
 
       def install
         bin.install "backrest"
@@ -45,7 +45,7 @@ class Backrest < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/johnmaguire/backrest/releases/download/v0.17.0/backrest_Linux_arm64.tar.gz"
-      sha256 "7d7c9d12d0fd0ca10dded45071c99b2f0ee2b79dbf7ffb464eae0e82a0b3a9df"
+      sha256 "e6539df28536225596dff56006b96b0c63c072154ddfb99055072f067a7b1238"
 
       def install
         bin.install "backrest"
